@@ -1,0 +1,57 @@
+{
+  "$schema": "./_schema.json",
+  "elements": [
+    {
+      "group": "nodes",
+      "data": {
+        "id": "matrixcalculus",
+        "label": "Matrix Calculus",
+        "nodeType": "topic",
+        "tier": "free",
+        "link": "https://json-schema.org/overview/what-is-jsonschema"
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "matrixcalculus1",
+        "label": "Intro to Matrix Calculus",
+        "parent": "matrixcalculus",
+        "nodeType": "video",
+        "tier": "free",
+        "type": "overview",
+        "authors": ["AInokoji"],
+        "link": "https://www.youtube.com",
+        "tags": ["Intro, Chain Rule"]
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "matrixcalculus2",
+        "label": "Multivariate Functions",
+        "parent": "matrixcalculus",
+        "nodeType": "video",
+        "tier": "free",
+        "type": "definition",
+        "authors": ["kokomi"],
+        "link": "https://www.youtube.com",
+        "tags": ["hi"]
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "matrixcalculus3",
+        "label": "Vector Functions",
+        "parent": "matrixcalculus",
+        "nodeType": "video",
+        "tier": "free",
+        "type": "definition",
+        "authors": ["AInokoji"],
+        "link": "https://www.youtube.com",
+        "tags": ["bro"]
+      }
+    }
+  ]
+}
