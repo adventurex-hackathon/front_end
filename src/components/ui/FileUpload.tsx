@@ -8,6 +8,7 @@ interface FileUploadProps {
   multiple?: boolean;
   maxFileSize?: number; // in MB
   disabled?: boolean;
+  isDarkMode?: boolean;
 }
 
 const DEFAULT_ACCEPTED_FORMATS = [
@@ -22,6 +23,7 @@ export default function FileUpload({
   multiple = true,
   maxFileSize = 10, // 10MB default
   disabled = false,
+  isDarkMode = false,
 }: FileUploadProps) {
   const [isDragging, setIsDragging] = useState(false);
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
@@ -123,12 +125,18 @@ export default function FileUpload({
     <div className="w-full space-y-4">
       <div
         className={clsx(
-          'relative rounded-lg border-2 border-dashed p-4 text-center transition-colors',
+          'relative rounded-lg border-2 border-dashed p-2 text-center transition-colors',
           {
-            'border-blue-300 bg-blue-50': isDragging && !disabled,
-            'border-gray-300 bg-gray-50': !isDragging && !disabled,
-            'border-gray-200 bg-gray-100 cursor-not-allowed opacity-50': disabled,
-            'hover:border-blue-300 hover:bg-blue-50': !disabled && !isDragging,
+            // Light mode
+            'border-blue-300 bg-blue-50': !isDarkMode && isDragging && !disabled,
+            'border-gray-300 bg-gray-50': !isDarkMode && !isDragging && !disabled,
+            'border-gray-200 bg-gray-100 cursor-not-allowed opacity-50': !isDarkMode && disabled,
+            'hover:border-blue-300 hover:bg-blue-50': !isDarkMode && !disabled && !isDragging,
+            // Dark mode
+            'border-blue-400 bg-blue-900/20': isDarkMode && isDragging && !disabled,
+            'border-gray-600 bg-gray-800': isDarkMode && !isDragging && !disabled,
+            'border-gray-700 bg-gray-700 cursor-not-allowed opacity-50': isDarkMode && disabled,
+            'hover:border-blue-400 hover:bg-blue-900/20': isDarkMode && !disabled && !isDragging,
           }
         )}
         onDragOver={handleDragOver}
@@ -149,21 +157,27 @@ export default function FileUpload({
           <Upload 
             className={clsx(
               'h-12 w-12',
-              disabled ? 'text-gray-400' : 'text-gray-500'
+              disabled 
+                ? isDarkMode ? 'text-gray-600' : 'text-gray-400'
+                : isDarkMode ? 'text-gray-400' : 'text-gray-500'
             )} 
           />
           
           <div className="space-y-2">
             <p className={clsx(
               'text-lg font-medium',
-              disabled ? 'text-gray-400' : 'text-gray-700'
+              disabled 
+                ? isDarkMode ? 'text-gray-600' : 'text-gray-400'
+                : isDarkMode ? 'text-gray-200' : 'text-gray-700'
             )}>
               {isDragging ? 'Drop your files here' : 'Drag & drop your code files here'}
             </p>
             
             <p className={clsx(
               'text-sm',
-              disabled ? 'text-gray-400' : 'text-gray-500'
+              disabled 
+                ? isDarkMode ? 'text-gray-600' : 'text-gray-400'
+                : isDarkMode ? 'text-gray-300' : 'text-gray-500'
             )}>
               or{' '}
               <button
@@ -173,8 +187,8 @@ export default function FileUpload({
                 className={clsx(
                   'font-medium underline',
                   disabled 
-                    ? 'text-gray-400 cursor-not-allowed' 
-                    : 'text-blue-600 hover:text-blue-700'
+                    ? isDarkMode ? 'text-gray-600 cursor-not-allowed' : 'text-gray-400 cursor-not-allowed' 
+                    : isDarkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'
                 )}
               >
                 browse files
@@ -183,7 +197,9 @@ export default function FileUpload({
             
             <p className={clsx(
               'text-xs',
-              disabled ? 'text-gray-400' : 'text-gray-400'
+              disabled 
+                ? isDarkMode ? 'text-gray-600' : 'text-gray-400'
+                : isDarkMode ? 'text-gray-500' : 'text-gray-400'
             )}>
               Supports: {acceptedFormats.slice(0, 6).join(', ')}
               {acceptedFormats.length > 6 && ` +${acceptedFormats.length - 6} more`}
@@ -195,7 +211,12 @@ export default function FileUpload({
       </div>
 
       {error && (
-        <div className="flex items-center space-x-2 rounded-md bg-red-50 p-3 text-red-700">
+        <div className={clsx(
+          'flex items-center space-x-2 rounded-md p-3',
+          isDarkMode 
+            ? 'bg-red-900/20 text-red-400' 
+            : 'bg-red-50 text-red-700'
+        )}>
           <AlertCircle className="h-4 w-4" />
           <span className="text-sm">{error}</span>
         </div>
@@ -204,7 +225,10 @@ export default function FileUpload({
       {uploadedFiles.length > 0 && (
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h3 className="text-sm font-medium text-gray-700">
+            <h3 className={clsx(
+              'text-sm font-medium',
+              isDarkMode ? 'text-gray-200' : 'text-gray-700'
+            )}>
               Uploaded Files ({uploadedFiles.length})
             </h3>
             <button
@@ -220,13 +244,25 @@ export default function FileUpload({
             {uploadedFiles.map((file, index) => (
               <div
                 key={`${file.name}-${index}`}
-                className="flex items-center justify-between rounded-md bg-gray-50 p-3"
+                className={clsx(
+                  'flex items-center justify-between rounded-md p-3',
+                  isDarkMode ? 'bg-gray-700' : 'bg-gray-50'
+                )}
               >
                 <div className="flex items-center space-x-3">
-                  <File className="h-4 w-4 text-gray-500" />
+                  <File className={clsx(
+                    'h-4 w-4',
+                    isDarkMode ? 'text-gray-400' : 'text-gray-500'
+                  )} />
                   <div>
-                    <p className="text-sm font-medium text-gray-700">{file.name}</p>
-                    <p className="text-xs text-gray-500">
+                    <p className={clsx(
+                      'text-sm font-medium',
+                      isDarkMode ? 'text-gray-200' : 'text-gray-700'
+                    )}>{file.name}</p>
+                    <p className={clsx(
+                      'text-xs',
+                      isDarkMode ? 'text-gray-400' : 'text-gray-500'
+                    )}>
                       {(file.size / 1024).toFixed(1)} KB
                     </p>
                   </div>
@@ -235,7 +271,11 @@ export default function FileUpload({
                 <button
                   type="button"
                   onClick={() => removeFile(index)}
-                  className="text-red-500 hover:text-red-700"
+                  className={clsx(
+                    isDarkMode 
+                      ? 'text-red-400 hover:text-red-300' 
+                      : 'text-red-500 hover:text-red-700'
+                  )}
                 >
                   <X className="h-4 w-4" />
                 </button>

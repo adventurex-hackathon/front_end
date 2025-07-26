@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Head from "next/head";
-import { Sparkles, Code, Play, MessageCircle } from 'lucide-react';
+import Image from "next/image";
+import { Sparkles, Code, Play, MessageCircle, Sun, Moon } from 'lucide-react';
 
 import FileUpload from '../components/ui/FileUpload';
 import VideoPlayer from '../components/ui/VideoPlayer';
@@ -25,6 +26,7 @@ interface ProcessingState {
 export default function Home() {
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
   const [userQuestion, setUserQuestion] = useState<string>('');
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
   const [processingState, setProcessingState] = useState<ProcessingState>({ stage: 'idle' });
   const [generatedVideo, setGeneratedVideo] = useState<string | undefined>();
   const [generatedCode, setGeneratedCode] = useState<string | undefined>();
@@ -129,6 +131,10 @@ export default function Home() {
     setProcessingState({ stage: 'idle' });
     setGeneratedVideo(undefined);
     setGeneratedCode(undefined);
+  };
+
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
   };
 
   const simulateDelay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
@@ -239,69 +245,121 @@ def example_function(data):
   return (
     <>
       <Head>
-        <title>Manim Explainer - Visualize Your Code</title>
+        <title>Visocode - Visualize Your Code</title>
         <meta name="description" content="Transform your code into visual explanations using Manim animations" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+      <div className={`min-h-screen transition-colors duration-300 ${
+        isDarkMode 
+          ? 'bg-gradient-to-br from-gray-900 to-gray-800' 
+          : 'bg-gradient-to-br from-slate-50 to-blue-50'
+      }`}>
         {/* Header */}
-        <header className="bg-white/80 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
+        <header className={`backdrop-blur-sm border-b sticky top-0 z-50 transition-colors duration-300 ${
+          isDarkMode 
+            ? 'bg-gray-900/80 border-gray-700' 
+            : 'bg-white/80 border-gray-200'
+        }`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center space-x-3">
-                <div className="p-2 bg-blue-600 rounded-lg">
-                  <Sparkles className="h-6 w-6 text-white" />
+                <div className="flex items-center justify-center w-10 h-10">
+                  <Image 
+                    src={isDarkMode ? "/visocode_logo_white.png" : "/visocode_logo_black.png"} 
+                    alt="Visocode Logo" 
+                    width={40} 
+                    height={40}
+                    className="rounded transition-opacity duration-300"
+                  />
                 </div>
                 <div>
-                  <h1 className="text-xl font-bold text-gray-900">Manim Explainer</h1>
-                  <p className="text-sm text-gray-500">Code to Visualization</p>
+                  <h1 className={`text-xl font-bold transition-colors duration-300 ${
+                    isDarkMode ? 'text-white' : 'text-gray-900'
+                  }`}>Visocode</h1>
+                  <p className={`text-sm transition-colors duration-300 ${
+                    isDarkMode ? 'text-gray-300' : 'text-gray-500'
+                  }`}>Code to Visualization</p>
                 </div>
               </div>
               
-              <div className="flex items-center space-x-4 text-sm text-gray-600">
-                <div className="flex items-center space-x-1">
-                  <Code className="h-4 w-4" />
-                  <span>Upload Code</span>
+              <div className="flex items-center space-x-4">
+                <div className={`flex items-center space-x-4 text-sm transition-colors duration-300 ${
+                  isDarkMode ? 'text-gray-300' : 'text-gray-600'
+                }`}>
+                  <div className="flex items-center space-x-1">
+                    <Code className="h-4 w-4" />
+                    <span>Upload Code</span>
+                  </div>
+                  <span className={`transition-colors duration-300 ${
+                    isDarkMode ? 'text-gray-500' : 'text-gray-300'
+                  }`}>→</span>
+                  <div className="flex items-center space-x-1">
+                    <Sparkles className="h-4 w-4" />
+                    <span>AI Analysis</span>
+                  </div>
+                  <span className={`transition-colors duration-300 ${
+                    isDarkMode ? 'text-gray-500' : 'text-gray-300'
+                  }`}>→</span>
+                  <div className="flex items-center space-x-1">
+                    <Play className="h-4 w-4" />
+                    <span>Animation</span>
+                  </div>
                 </div>
-                <span className="text-gray-300">→</span>
-                <div className="flex items-center space-x-1">
-                  <Sparkles className="h-4 w-4" />
-                  <span>AI Analysis</span>
-                </div>
-                <span className="text-gray-300">→</span>
-                <div className="flex items-center space-x-1">
-                  <Play className="h-4 w-4" />
-                  <span>Animation</span>
-                </div>
+                
+                {/* Theme Toggle */}
+                <button
+                  onClick={toggleTheme}
+                  className={`p-2 rounded-lg transition-colors duration-300 ${
+                    isDarkMode 
+                      ? 'bg-gray-800 hover:bg-gray-700 text-yellow-400' 
+                      : 'bg-gray-100 hover:bg-gray-200 text-gray-600'
+                  }`}
+                  title={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+                >
+                  {isDarkMode ? (
+                    <Sun className="h-5 w-5" />
+                  ) : (
+                    <Moon className="h-5 w-5" />
+                  )}
+                </button>
               </div>
             </div>
           </div>
         </header>
 
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             
             {/* Left Panel - File Upload */}
-            <div className="space-y-6">
+            <div className="space-y-4">
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                <h2 className={`text-2xl font-bold mb-2 transition-colors duration-300 ${
+                  isDarkMode ? 'text-white' : 'text-gray-900'
+                }`}>
                   Upload Your Code
                 </h2>
-                <p className="text-gray-600 mb-6">
+                <p className={`mb-4 transition-colors duration-300 ${
+                  isDarkMode ? 'text-gray-300' : 'text-gray-600'
+                }`}>
                   Drop your code files here and we&apos;ll create a visual explanation using Manim animations.
                 </p>
                 
                 <FileUpload
                   onFilesSelect={handleFilesSelect}
                   disabled={isProcessing}
+                  isDarkMode={isDarkMode}
                 />
                 
                 {/* Question Input */}
-                <div className="mt-6">
-                  <div className="flex items-center space-x-2 mb-3">
-                    <MessageCircle className="h-5 w-5 text-gray-500" />
-                    <label htmlFor="userQuestion" className="text-lg font-medium text-gray-700">
+                <div className="mt-4">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <MessageCircle className={`h-5 w-5 transition-colors duration-300 ${
+                      isDarkMode ? 'text-gray-400' : 'text-gray-500'
+                    }`} />
+                    <label htmlFor="userQuestion" className={`text-lg font-medium transition-colors duration-300 ${
+                      isDarkMode ? 'text-gray-200' : 'text-gray-700'
+                    }`}>
                       What do you want to understand about this code?
                     </label>
                   </div>
@@ -312,18 +370,22 @@ def example_function(data):
                     onChange={(e) => setUserQuestion(e.target.value)}
                     placeholder="E.g. Show me how the state changes over time"
                     disabled={isProcessing}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors disabled:bg-gray-100 disabled:cursor-not-allowed text-gray-700 placeholder-gray-400"
+                    className={`w-full px-3 py-1.5 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors disabled:cursor-not-allowed ${
+                      isDarkMode 
+                        ? 'bg-gray-800 border-gray-600 text-gray-100 placeholder-gray-400 disabled:bg-gray-700' 
+                        : 'bg-white border-gray-300 text-gray-700 placeholder-gray-400 disabled:bg-gray-100'
+                    }`}
                   />
                 </div>
               </div>
 
               {uploadedFiles.length > 0 && (
-                <div className="flex justify-center">
+                <div className="flex justify-center mt-4">
                   <button
                     onClick={handleSubmit}
                     disabled={!canSubmit}
                     className={`
-                      inline-flex items-center space-x-3 px-8 py-4 rounded-xl text-white font-semibold text-lg
+                      inline-flex items-center space-x-3 px-6 py-3 rounded-xl text-white font-semibold text-base
                       transition-all duration-200 transform hover:scale-105
                       ${canSubmit 
                         ? 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg hover:shadow-xl' 
@@ -331,7 +393,7 @@ def example_function(data):
                       }
                     `}
                   >
-                    <Sparkles className="h-5 w-5" />
+                    <Sparkles className="h-4 w-4" />
                     <span>Generate Animation</span>
                   </button>
                 </div>
@@ -348,8 +410,10 @@ def example_function(data):
             </div>
 
             {/* Right Panel - Results */}
-            <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-gray-900">
+            <div className="space-y-4">
+              <h2 className={`text-2xl font-bold transition-colors duration-300 ${
+                isDarkMode ? 'text-white' : 'text-gray-900'
+              }`}>
                 Animation Result
               </h2>
 
@@ -416,8 +480,12 @@ def example_function(data):
           </div>
 
           {/* Footer */}
-          <footer className="mt-16 py-8 border-t border-gray-200">
-            <div className="text-center text-gray-500">
+          <footer className={`mt-12 py-6 border-t transition-colors duration-300 ${
+            isDarkMode ? 'border-gray-700' : 'border-gray-200'
+          }`}>
+            <div className={`text-center transition-colors duration-300 ${
+              isDarkMode ? 'text-gray-400' : 'text-gray-500'
+            }`}>
               <p className="mb-2">
                 Built for vibe coders who want to understand their AI-generated code
               </p>
