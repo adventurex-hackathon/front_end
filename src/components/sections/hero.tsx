@@ -29,7 +29,7 @@ export const Hero = () => (
         <div className="mt-12 flex max-w-lg justify-between md:max-w-xl">
           <div>
             <span className="block text-3xl font-semibold md:text-4xl lg:text-5xl">
-              {"<"}3
+              {"<"}2
             </span>
             Minute Lectures
           </div>
@@ -59,7 +59,7 @@ const Background = () => (
         <div className="scale-[calc(16/9)] md:scale-100">
           <div className="flex aspect-square items-center md:aspect-video">
             <iframe
-              src="https://player.vimeo.com/video/810387165?h=7363b7ae4f&amp;dnt=1&amp;loop=1&amp;background=1&amp;app_id=58479"
+              src="https://player.vimeo.com/video/1104797156?h=7363b7ae4f&amp;dnt=1&amp;loop=1&amp;background=1&amp;app_id=58479"
               width="426"
               height="240"
               allow="autoplay; fullscreen; picture-in-picture"
