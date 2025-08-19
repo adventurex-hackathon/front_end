@@ -51,7 +51,7 @@ export default function DashboardPage() {
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2">Welcome to your Dashboard!</h1>
           <p className="text-muted-foreground">
-            You've successfully authenticated with Supabase.
+            You&apos;ve successfully authenticated with Supabase.
           </p>
         </div>
 

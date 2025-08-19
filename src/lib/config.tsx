@@ -5,7 +5,7 @@ import { ThirdBentoAnimation } from "@/components/third-bento-animation";
 import { FlickeringGrid } from "@/components/ui/flickering-grid";
 import { Globe } from "@/components/ui/globe";
 import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 
 export const Highlight = ({
   children,
@@ -738,7 +738,7 @@ export const siteConfig = {
       img: "https://randomuser.me/api/portraits/women/83.jpg",
       description: (
         <p>
-          My students finally understand quantum mechanics thanks to VisoCode's
+          My students finally understand quantum mechanics thanks to VisoCode&apos;s
           animated explanations.
           <Highlight>Test scores improved by 40% this semester.</Highlight> A
           must-have for STEM educators.
@@ -753,7 +753,7 @@ export const siteConfig = {
       description: (
         <p>
           Teaching data structures and algorithms became so much easier with
-          VisoCode's visual explanations.
+          VisoCode&apos;s visual explanations.
           <Highlight>
             Students grasp complex concepts 3x faster than before.
           </Highlight>{" "}
@@ -801,7 +801,7 @@ export const siteConfig = {
       description: (
         <p>
           Explaining molecular interactions became incredibly engaging with
-          VisoCode's animations.
+          VisoCode&apos;s animations.
           <Highlight>
             Students now actively participate in chemistry discussions.
           </Highlight>{" "}
@@ -832,7 +832,7 @@ export const siteConfig = {
       img: "https://randomuser.me/api/portraits/women/73.jpg",
       description: (
         <p>
-          My programming courses became much more engaging with VisoCode's
+          My programming courses became much more engaging with VisoCode&apos;s
           animated code explanations.
           <Highlight>
             Course completion rates increased by 85%.
@@ -878,7 +878,7 @@ export const siteConfig = {
       img: "https://randomuser.me/api/portraits/men/54.jpg",
       description: (
         <p>
-          As someone learning to code independently, VisoCode's explanations
+          As someone learning to code independently, VisoCode&apos;s explanations
           made complex concepts accessible.
           <Highlight>
             I landed my first developer job after 6 months.
