@@ -118,7 +118,7 @@ export default function HomePage() {
                 onClick={handleGenerate}
                 disabled={!prompt.trim()}
                 size="lg"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium px-8 py-3 rounded-full shadow-lg"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium px-8 py-3 rounded-full shadow-lg cursor-pointer"
               >
                 <span className="mr-2">✦</span>
                 Generate
