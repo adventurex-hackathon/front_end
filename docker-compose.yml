@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    # Uncomment the following lines if you need to pass environment variables
+    # env_file:
+    #   - .env.local
+    restart: unless-stopped
+    # Uncomment if you need to mount volumes for development
+    # volumes:
+    #   - .:/app
+    #   - /app/node_modules
+    #   - /app/.next
+
+  # Uncomment if you want to add a database service (e.g., PostgreSQL for Supabase local development)
+  # db:
+  #   image: postgres:15
+  #   environment:
+  #     POSTGRES_DB: visocode
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: postgres
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   restart: unless-stopped
+
+# volumes:
+#   postgres_data:
