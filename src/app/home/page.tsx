@@ -55,16 +55,6 @@ export default function HomePage() {
         console.log("Response status:", response.status);
         console.log("Response headers:", Object.fromEntries(response.headers.entries()));
 
-        if (!response.ok) {
-          // Try to get error details from JSON response
-          try {
-            const errorData = await response.json();
-            throw new Error(errorData.error || `HTTP ${response.status}: ${response.statusText}`);
-          } catch (jsonError) {
-            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-          }
-        }
-
         // Check if response is a video file
         const contentType = response.headers.get('content-type');
         const contentDisposition = response.headers.get('content-disposition');
