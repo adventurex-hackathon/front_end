@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 
 export default function HomePage() {
   const [prompt, setPrompt] = useState("");
+  const [videoUrl, setVideoUrl] = useState("");
   const { user, loading } = useAuth();
   const router = useRouter();
 
@@ -34,10 +35,52 @@ export default function HomePage() {
     return null;
   }
 
-  const handleGenerate = () => {
+  const handleGenerate = async () => {
     if (prompt.trim()) {
       console.log("Generating video for:", prompt);
-      // TODO: Implement video generation logic
+      try {
+        const response = await fetch("http://localhost:5000/capitalize", {
+          method: "POST",
+          body: JSON.stringify({ text: prompt }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+
+        console.log("Response status:", response.status);
+        console.log("Response headers:", Object.fromEntries(response.headers.entries()));
+
+        if (!response.ok) {
+          // Try to get error details from JSON response
+          try {
+            const errorData = await response.json();
+            throw new Error(errorData.error || `HTTP ${response.status}: ${response.statusText}`);
+          } catch (jsonError) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+          }
+        }
+
+        // Check if response is a video file
+        const contentType = response.headers.get('content-type');
+        const contentDisposition = response.headers.get('content-disposition');
+        
+        if (contentType && (contentType.includes('video/') || contentType.includes('application/octet-stream')) || 
+            contentDisposition && contentDisposition.includes('attachment')) {
+          // Create a blob URL for the video
+          const blob = await response.blob();
+          const url = URL.createObjectURL(blob);
+          setVideoUrl(url);
+          console.log("Video URL created:", url);
+        } else {
+          // Handle JSON response (error case)
+          const data = await response.json();
+          throw new Error(data.error || 'Unexpected response format');
+        }
+      } catch (error) {
+        console.error("Error generating video:", error);
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+        alert(`Error: ${errorMessage}`);
+      }
     }
   };
 
@@ -45,6 +88,17 @@ export default function HomePage() {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleGenerate();
+    }
+  };
+
+  const downloadVideo = () => {
+    if (videoUrl) {
+      const link = document.createElement('a');
+      link.href = videoUrl;
+      link.download = 'generated-video.mp4';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     }
   };
 
@@ -151,10 +205,37 @@ export default function HomePage() {
           </div>
         </div>
 
+        {videoUrl && (
+        <div>
+          <h3>Generated Video:</h3>
+          <video 
+            controls 
+            style={{ width: '100%', maxWidth: '600px', marginBottom: '10px' }}
+          >
+            <source src={videoUrl} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          
+          <button
+            onClick={downloadVideo}
+            style={{
+              padding: '8px 16px',
+              backgroundColor: '#28a745',
+              color: 'white',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer'
+            }}
+          >
+            Download Video
+          </button>
+        </div>
+      )}
+
         {/* Bottom Info */}
         <div className="mt-12 text-center text-muted-foreground text-sm">
           <p>
-            Powered by advanced AI • Creates videos in seconds • 
+            Powered by advanced AI • Creates videos on demand • 
             <span className="text-primary font-medium"> 150% better retention</span> for visual learners
           </p>
         </div>
