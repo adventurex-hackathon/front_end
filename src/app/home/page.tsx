@@ -3,11 +3,12 @@
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/auth-context";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function HomePage() {
   const [prompt, setPrompt] = useState("");
   const [videoUrl, setVideoUrl] = useState("");
+  const previousUrlRef = useRef<string | null>(null);
   const { user, loading } = useAuth();
   const router = useRouter();
 
@@ -39,7 +40,11 @@ export default function HomePage() {
     if (prompt.trim()) {
       console.log("Generating video for:", prompt);
       try {
-        const response = await fetch("http://localhost:5000/capitalize", {
+        // Clear current video to ensure refresh
+        if (videoUrl) {
+          setVideoUrl("");
+        }
+        const response = await fetch("https://tuna-main-lacewing.ngrok-free.app/capitalize", {
           method: "POST",
           body: JSON.stringify({ text: prompt }),
           headers: {
@@ -69,6 +74,11 @@ export default function HomePage() {
           // Create a blob URL for the video
           const blob = await response.blob();
           const url = URL.createObjectURL(blob);
+          // Revoke previous object URL to avoid memory leaks and stale video
+          if (previousUrlRef.current) {
+            URL.revokeObjectURL(previousUrlRef.current);
+          }
+          previousUrlRef.current = url;
           setVideoUrl(url);
           console.log("Video URL created:", url);
         } else {
@@ -206,29 +216,26 @@ export default function HomePage() {
         </div>
 
         {videoUrl && (
-        <div>
-          <h3>Generated Video:</h3>
-          <video 
-            controls 
-            style={{ width: '100%', maxWidth: '600px', marginBottom: '10px' }}
-          >
-            <source src={videoUrl} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          
-          <button
-            onClick={downloadVideo}
-            style={{
-              padding: '8px 16px',
-              backgroundColor: '#28a745',
-              color: 'white',
-              border: 'none',
-              borderRadius: '4px',
-              cursor: 'pointer'
-            }}
-          >
-            Download Video
-          </button>
+        <div className="mt-12 text-center">
+          <h3 className="text-2xl font-bold text-foreground mb-6">Generated Video</h3>
+          <div className="flex flex-col items-center space-y-4">
+            <video 
+              controls 
+              className="w-full max-w-2xl rounded-lg shadow-lg"
+              key={videoUrl}
+              style={{ maxHeight: '400px' }}
+            >
+              <source src={videoUrl} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            
+            <Button
+              onClick={downloadVideo}
+              className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg"
+            >
+              Download Video
+            </Button>
+          </div>
         </div>
       )}
 
