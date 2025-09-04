@@ -1,0 +1,101 @@
+{
+  "$schema": "./_schema.json",
+  "elements": [
+    {
+      "group": "nodes",
+      "data": {
+        "id": "diffeq",
+        "label": "Differential Equations",
+        "nodeType": "topic",
+        "tier": "free",
+        "link": "https://www.youtube.com/playlist?list=PLZHQObOWTQDNPOjrT6KVlfJuKtYTftqH6"
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "de1",
+        "label": "First-Order ODEs",
+        "parent": "diffeq",
+        "nodeType": "video",
+        "tier": "free",
+        "type": "overview",
+        "authors": ["AInokoji"],
+        "link": "https://www.youtube.com/watch?v=p_di4Zn4wz4",
+        "tags": ["separable", "linear", "existence-uniqueness"]
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "de2",
+        "label": "Second-Order Linear ODEs",
+        "parent": "diffeq",
+        "nodeType": "video",
+        "tier": "free",
+        "type": "definition",
+        "authors": ["saki"],
+        "link": "https://www.youtube.com/watch?v=ZK3O402wf1c",
+        "tags": ["characteristic equation", "homogeneous", "particular"]
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "de3",
+        "label": "Laplace Transform",
+        "parent": "diffeq",
+        "nodeType": "video",
+        "tier": "free",
+        "type": "overview",
+        "authors": ["kokomi"],
+        "link": "https://www.youtube.com/watch?v=9T7M6li4vbM",
+        "tags": ["transform methods", "initial value problems"]
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "de4",
+        "label": "Systems of ODEs",
+        "parent": "diffeq",
+        "nodeType": "video",
+        "tier": "premium",
+        "type": "overview",
+        "authors": ["AInokoji"],
+        "link": "https://www.youtube.com/watch?v=spUNpyF58BY",
+        "tags": ["matrix methods", "eigenvalues", "phase plane"]
+      }
+    },
+    {
+      "group": "edges",
+      "data": {
+        "source": "de1",
+        "target": "de2",
+        "type": "main",
+        "importance": 2,
+        "message": "Second-order linear ODEs generalize first-order behavior."
+      }
+    },
+    {
+      "group": "edges",
+      "data": {
+        "source": "de2",
+        "target": "de3",
+        "type": "supporting",
+        "importance": 1,
+        "message": "Laplace transforms solve linear ODEs with inputs neatly."
+      }
+    },
+    {
+      "group": "edges",
+      "data": {
+        "source": "de2",
+        "target": "de4",
+        "type": "supporting",
+        "importance": 1,
+        "message": "Systems leverage linear algebra for coupled dynamics."
+      }
+    }
+  ]
+}

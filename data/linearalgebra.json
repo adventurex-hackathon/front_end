@@ -1,0 +1,125 @@
+{
+  "$schema": "./_schema.json",
+  "elements": [
+    {
+      "group": "nodes",
+      "data": {
+        "id": "linearalgebra",
+        "label": "Linear Algebra",
+        "nodeType": "topic",
+        "tier": "free",
+        "link": "https://www.youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr"
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "la1",
+        "label": "Vectors and Spaces",
+        "parent": "linearalgebra",
+        "nodeType": "video",
+        "tier": "free",
+        "type": "overview",
+        "authors": ["3blue1brown"],
+        "link": "https://www.youtube.com/watch?v=fNk_zzaMoSs",
+        "tags": ["vectors", "span", "basis"]
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "la2",
+        "label": "Matrix Multiplication",
+        "parent": "linearalgebra",
+        "nodeType": "video",
+        "tier": "free",
+        "type": "definition",
+        "authors": ["AInokoji"],
+        "link": "https://www.youtube.com/watch?v=XkY2DOUCWMU",
+        "tags": ["linear maps", "composition", "shapes"]
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "la3",
+        "label": "Determinant",
+        "parent": "linearalgebra",
+        "nodeType": "video",
+        "tier": "free",
+        "type": "overview",
+        "authors": ["saki"],
+        "link": "https://www.youtube.com/watch?v=Ip3X9LOh2dk",
+        "tags": ["area scaling", "invertibility", "orientation"]
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "la4",
+        "label": "Eigenvalues and Eigenvectors",
+        "parent": "linearalgebra",
+        "nodeType": "video",
+        "tier": "free",
+        "type": "definition",
+        "authors": ["kokomi"],
+        "link": "https://www.youtube.com/watch?v=PFDu9oVAE-g",
+        "tags": ["diagonalization", "spectral", "dynamics"]
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "la5",
+        "label": "SVD",
+        "parent": "linearalgebra",
+        "nodeType": "video",
+        "tier": "premium",
+        "type": "overview",
+        "authors": ["AInokoji"],
+        "link": "https://www.youtube.com/watch?v=TZU3wfytS9g",
+        "tags": ["decomposition", "rank", "compression"]
+      }
+    },
+    {
+      "group": "edges",
+      "data": {
+        "source": "la1",
+        "target": "la2",
+        "type": "main",
+        "importance": 2,
+        "message": "Matrix multiplication represents composition of linear maps."
+      }
+    },
+    {
+      "group": "edges",
+      "data": {
+        "source": "la2",
+        "target": "la3",
+        "type": "supporting",
+        "importance": 1,
+        "message": "Determinant connects to invertibility and area/volume scaling."
+      }
+    },
+    {
+      "group": "edges",
+      "data": {
+        "source": "la2",
+        "target": "la4",
+        "type": "main",
+        "importance": 3,
+        "message": "Eigen-structure reveals invariant directions of transformations."
+      }
+    },
+    {
+      "group": "edges",
+      "data": {
+        "source": "la4",
+        "target": "la5",
+        "type": "supporting",
+        "importance": 1,
+        "message": "SVD generalizes eigen-decomposition to all matrices."
+      }
+    }
+  ]
+}

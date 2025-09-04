@@ -1,0 +1,101 @@
+{
+  "$schema": "./_schema.json",
+  "elements": [
+    {
+      "group": "nodes",
+      "data": {
+        "id": "statistics",
+        "label": "Statistics",
+        "nodeType": "topic",
+        "tier": "free",
+        "link": "https://www.youtube.com/playlist?list=PLblh5JKOoLUIxGDQs4LFFD--41Vzf-ME1"
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "stats1",
+        "label": "Descriptive Statistics",
+        "parent": "statistics",
+        "nodeType": "video",
+        "tier": "free",
+        "type": "overview",
+        "authors": ["AInokoji"],
+        "link": "https://www.youtube.com/watch?v=Vfo5le26IhY",
+        "tags": ["mean", "variance", "visualization"]
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "stats2",
+        "label": "Sampling and Estimation",
+        "parent": "statistics",
+        "nodeType": "video",
+        "tier": "free",
+        "type": "overview",
+        "authors": ["saki"],
+        "link": "https://www.youtube.com/watch?v=jK0z8vW2xZQ",
+        "tags": ["sampling", "estimators", "bias-variance"]
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "stats3",
+        "label": "Confidence Intervals",
+        "parent": "statistics",
+        "nodeType": "video",
+        "tier": "free",
+        "type": "definition",
+        "authors": ["kokomi"],
+        "link": "https://www.youtube.com/watch?v=JQc3yx0-Q9E",
+        "tags": ["intervals", "uncertainty", "normal approximation"]
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "stats4",
+        "label": "Hypothesis Testing",
+        "parent": "statistics",
+        "nodeType": "video",
+        "tier": "free",
+        "type": "definition",
+        "authors": ["AInokoji"],
+        "link": "https://www.youtube.com/watch?v=0zZYBALbZgg",
+        "tags": ["null", "alternative", "p-value"]
+      }
+    },
+    {
+      "group": "edges",
+      "data": {
+        "source": "stats1",
+        "target": "stats2",
+        "type": "supporting",
+        "importance": 1,
+        "message": "Descriptive summaries motivate sampling and estimation."
+      }
+    },
+    {
+      "group": "edges",
+      "data": {
+        "source": "stats2",
+        "target": "stats3",
+        "type": "main",
+        "importance": 2,
+        "message": "Intervals quantify estimator uncertainty."
+      }
+    },
+    {
+      "group": "edges",
+      "data": {
+        "source": "stats3",
+        "target": "stats4",
+        "type": "main",
+        "importance": 3,
+        "message": "Testing builds on estimation to make decisions."
+      }
+    }
+  ]
+}

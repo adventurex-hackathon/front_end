@@ -8,9 +8,19 @@ export function LayoutWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isAuthPage = pathname.startsWith("/auth");
   const isAppPage = pathname === "/home" || pathname === "/dashboard";
+  const isGraphPage = pathname === "/graph";
 
   if (isAuthPage) {
     return <>{children}</>;
+  }
+
+  if (isGraphPage) {
+    return (
+      <>
+        <HomeNavbar />
+        {children}
+      </>
+    );
   }
 
   return (

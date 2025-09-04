@@ -1,0 +1,101 @@
+{
+  "$schema": "./_schema.json",
+  "elements": [
+    {
+      "group": "nodes",
+      "data": {
+        "id": "mechanics",
+        "label": "Physics: Mechanics",
+        "nodeType": "topic",
+        "tier": "free",
+        "link": "https://www.youtube.com/playlist?list=PLPH7f_7ZlzxTi6kS4vCmv4ZKm9u8g5yic"
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "mech1",
+        "label": "Kinematics",
+        "parent": "mechanics",
+        "nodeType": "video",
+        "tier": "free",
+        "type": "overview",
+        "authors": ["AInokoji"],
+        "link": "https://www.youtube.com/watch?v=E43-CfukEgs",
+        "tags": ["position", "velocity", "acceleration"]
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "mech2",
+        "label": "Newton's Laws",
+        "parent": "mechanics",
+        "nodeType": "video",
+        "tier": "free",
+        "type": "definition",
+        "authors": ["saki"],
+        "link": "https://www.youtube.com/watch?v=kKKM8Y-aGZ4",
+        "tags": ["forces", "mass", "acceleration"]
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "mech3",
+        "label": "Work and Energy",
+        "parent": "mechanics",
+        "nodeType": "video",
+        "tier": "free",
+        "type": "overview",
+        "authors": ["kokomi"],
+        "link": "https://www.youtube.com/watch?v=GhcPq9z3W7g",
+        "tags": ["kinetic", "potential", "conservation"]
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "mech4",
+        "label": "Momentum and Collisions",
+        "parent": "mechanics",
+        "nodeType": "video",
+        "tier": "free",
+        "type": "definition",
+        "authors": ["AInokoji"],
+        "link": "https://www.youtube.com/watch?v=iP3bgfQ-1jY",
+        "tags": ["impulse", "elastic", "inelastic"]
+      }
+    },
+    {
+      "group": "edges",
+      "data": {
+        "source": "mech1",
+        "target": "mech2",
+        "type": "main",
+        "importance": 2,
+        "message": "Newton's laws explain motion introduced in kinematics."
+      }
+    },
+    {
+      "group": "edges",
+      "data": {
+        "source": "mech2",
+        "target": "mech3",
+        "type": "supporting",
+        "importance": 1,
+        "message": "Work-energy theorem derives from Newton's second law."
+      }
+    },
+    {
+      "group": "edges",
+      "data": {
+        "source": "mech3",
+        "target": "mech4",
+        "type": "supporting",
+        "importance": 1,
+        "message": "Energy and momentum conservation govern collisions."
+      }
+    }
+  ]
+}

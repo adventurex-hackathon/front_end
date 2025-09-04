@@ -1,0 +1,101 @@
+{
+  "$schema": "./_schema.json",
+  "elements": [
+    {
+      "group": "nodes",
+      "data": {
+        "id": "probability",
+        "label": "Probability",
+        "nodeType": "topic",
+        "tier": "free",
+        "link": "https://www.youtube.com/playlist?list=PLoROMvodv4rMWw6rRoeSpkiseTHzWj6vu"
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "prob1",
+        "label": "Basic Probability Rules",
+        "parent": "probability",
+        "nodeType": "video",
+        "tier": "free",
+        "type": "overview",
+        "authors": ["AInokoji"],
+        "link": "https://www.youtube.com/watch?v=H6w6is9V1-8",
+        "tags": ["sample space", "events", "axioms"]
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "prob2",
+        "label": "Conditional Probability",
+        "parent": "probability",
+        "nodeType": "video",
+        "tier": "free",
+        "type": "definition",
+        "authors": ["saki"],
+        "link": "https://www.youtube.com/watch?v=lG4VkPoG3ko",
+        "tags": ["conditioning", "multiplication rule", "independence"]
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "prob3",
+        "label": "Bayes' Theorem",
+        "parent": "probability",
+        "nodeType": "video",
+        "tier": "free",
+        "type": "theorem",
+        "authors": ["kokomi"],
+        "link": "https://www.youtube.com/watch?v=HZGCoVF3YvM",
+        "tags": ["posterior", "prior", "likelihood"]
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "prob4",
+        "label": "Random Variables and Distributions",
+        "parent": "probability",
+        "nodeType": "video",
+        "tier": "free",
+        "type": "overview",
+        "authors": ["AInokoji"],
+        "link": "https://www.youtube.com/watch?v=za7Q3bCs0Jk",
+        "tags": ["pmf", "pdf", "cdf"]
+      }
+    },
+    {
+      "group": "edges",
+      "data": {
+        "source": "prob1",
+        "target": "prob2",
+        "type": "main",
+        "importance": 2,
+        "message": "Conditional probability refines likelihoods given evidence."
+      }
+    },
+    {
+      "group": "edges",
+      "data": {
+        "source": "prob2",
+        "target": "prob3",
+        "type": "main",
+        "importance": 3,
+        "message": "Bayes' theorem flips conditionals to update beliefs."
+      }
+    },
+    {
+      "group": "edges",
+      "data": {
+        "source": "prob1",
+        "target": "prob4",
+        "type": "supporting",
+        "importance": 1,
+        "message": "Random variables attach numbers to outcomes with distributions."
+      }
+    }
+  ]
+}

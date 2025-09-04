@@ -1,0 +1,65 @@
+import Giscus from "@giscus/react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/primitives/card";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/primitives/tabs";
+import { type VideoNodeDataDefinition } from "@/types/cytoscape-elements";
+
+export const VideoCard = ({
+  id,
+  label,
+  parent,
+  tier,
+  type,
+  authors,
+  link,
+  tags,
+}: VideoNodeDataDefinition) => {
+  const convertLinkToEmbedUrl = (link: string) => {
+    const videoId = link.split("v=")[1];
+    const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+    return embedUrl;
+  };
+
+  return (
+    <Tabs defaultValue="video" className="w-[600px]">
+      <TabsList className="grid w-full grid-cols-2">
+        <TabsTrigger value="video">Video</TabsTrigger>
+        <TabsTrigger value="discussion">Discussion</TabsTrigger>
+      </TabsList>
+      <TabsContent value="video">
+        <Card>
+          <CardHeader>
+            <CardTitle>{label}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <iframe
+              className="w-full"
+              src={convertLinkToEmbedUrl(link)}
+              title={label}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            ></iframe>
+          </CardContent>
+          <CardFooter>
+            <button>Mark as complete</button>
+          </CardFooter>
+        </Card>
+      </TabsContent>
+      <TabsContent value="discussion">
+        <Card>Will implement soon...</Card>
+      </TabsContent>
+    </Tabs>
+  );
+};

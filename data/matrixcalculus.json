@@ -1,0 +1,269 @@
+{
+  "$schema": "./_schema.json",
+  "elements": [
+    {
+      "group": "nodes",
+      "data": {
+        "id": "matrixcalculus",
+        "label": "Matrix Calculus",
+        "nodeType": "topic",
+        "tier": "free",
+        "link": "https://json-schema.org/overview/what-is-jsonschema"
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "matrixcalculus1",
+        "label": "Intro to Matrix Calculus",
+        "parent": "matrixcalculus",
+        "nodeType": "video",
+        "tier": "free",
+        "type": "overview",
+        "authors": ["AInokoji"],
+        "link": "https://www.youtube.com",
+        "tags": ["Intro, Chain Rule"]
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "matrixcalculus2",
+        "label": "Multivariate Functions",
+        "parent": "matrixcalculus",
+        "nodeType": "video",
+        "tier": "free",
+        "type": "definition",
+        "authors": ["kokomi"],
+        "link": "https://www.youtube.com",
+        "tags": ["hi"]
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "matrixcalculus3",
+        "label": "Vector Functions",
+        "parent": "matrixcalculus",
+        "nodeType": "video",
+        "tier": "free",
+        "type": "definition",
+        "authors": ["AInokoji"],
+        "link": "https://www.youtube.com",
+        "tags": ["vector-valued", "derivatives"]
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "matrixcalculus4",
+        "label": "Jacobian Matrix",
+        "parent": "matrixcalculus",
+        "nodeType": "video",
+        "tier": "free",
+        "type": "definition",
+        "authors": ["AInokoji"],
+        "link": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        "tags": ["jacobian", "first-order", "multivariate"]
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "matrixcalculus5",
+        "label": "Gradient and Hessian",
+        "parent": "matrixcalculus",
+        "nodeType": "video",
+        "tier": "free",
+        "type": "definition",
+        "authors": ["kokomi"],
+        "link": "https://www.youtube.com/watch?v=oHg5SJYRHA0",
+        "tags": ["gradient", "hessian", "optimization"]
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "matrixcalculus6",
+        "label": "Matrix Derivative Identities",
+        "parent": "matrixcalculus",
+        "nodeType": "video",
+        "tier": "free",
+        "type": "overview",
+        "authors": ["saki"],
+        "link": "https://www.youtube.com/watch?v=9bZkp7q19f0",
+        "tags": ["trace", "determinant", "inverse", "rules"]
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "matrixcalculus7",
+        "label": "Trace Trick and Cyclic Property",
+        "parent": "matrixcalculus",
+        "nodeType": "video",
+        "tier": "free",
+        "type": "example",
+        "authors": ["AInokoji"],
+        "link": "https://www.youtube.com/watch?v=3GwjfUFyY6M",
+        "tags": ["trace", "cyclic", "simplification"]
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "matrixcalculus8",
+        "label": "Frobenius Norm Derivatives",
+        "parent": "matrixcalculus",
+        "nodeType": "video",
+        "tier": "free",
+        "type": "example",
+        "authors": ["kokomi"],
+        "link": "https://www.youtube.com/watch?v=ZZ5LpwO-An4",
+        "tags": ["norms", "least squares", "regularization"]
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "matrixcalculus9",
+        "label": "Backpropagation and Chain Rule",
+        "parent": "matrixcalculus",
+        "nodeType": "video",
+        "tier": "free",
+        "type": "overview",
+        "authors": ["AInokoji"],
+        "link": "https://www.youtube.com/watch?v=DLzxrzFCyOs",
+        "tags": ["backprop", "chain rule", "neural networks"]
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "matrixcalculus10",
+        "label": "Matrix Calculus for ML",
+        "parent": "matrixcalculus",
+        "nodeType": "video",
+        "tier": "premium",
+        "type": "overview",
+        "authors": ["saki"],
+        "link": "https://www.youtube.com/watch?v=kJQP7kiw5Fk",
+        "tags": ["machine learning", "loss gradients", "training"]
+      }
+    },
+    {
+      "group": "nodes",
+      "data": {
+        "id": "matrixcalculus11",
+        "label": "Kronecker and Vectorization",
+        "parent": "matrixcalculus",
+        "nodeType": "video",
+        "tier": "premium",
+        "type": "definition",
+        "authors": ["AInokoji"],
+        "link": "https://www.youtube.com/watch?v=ktvTqknDobU",
+        "tags": ["kronecker", "vec operator", "shapes"]
+      }
+    },
+    {
+      "group": "edges",
+      "data": {
+        "source": "matrixcalculus1",
+        "target": "matrixcalculus2",
+        "type": "main",
+        "importance": 2,
+        "message": "Start with multivariate functions before vector- and matrix-valued cases."
+      }
+    },
+    {
+      "group": "edges",
+      "data": {
+        "source": "matrixcalculus2",
+        "target": "matrixcalculus3",
+        "type": "supporting",
+        "importance": 2,
+        "message": "Vector functions generalize scalar outputs to vector outputs."
+      }
+    },
+    {
+      "group": "edges",
+      "data": {
+        "source": "matrixcalculus3",
+        "target": "matrixcalculus4",
+        "type": "main",
+        "importance": 3,
+        "message": "Jacobian collects partials for vector-valued functions."
+      }
+    },
+    {
+      "group": "edges",
+      "data": {
+        "source": "matrixcalculus4",
+        "target": "matrixcalculus5",
+        "type": "supporting",
+        "importance": 2,
+        "message": "Gradients and Hessians extend derivatives to optimization."
+      }
+    },
+    {
+      "group": "edges",
+      "data": {
+        "source": "matrixcalculus5",
+        "target": "matrixcalculus6",
+        "type": "supporting",
+        "importance": 1,
+        "message": "Derivative identities simplify complex expressions."
+      }
+    },
+    {
+      "group": "edges",
+      "data": {
+        "source": "matrixcalculus6",
+        "target": "matrixcalculus7",
+        "type": "supporting",
+        "importance": 1,
+        "message": "Trace trick leverages cyclic property for simplifications."
+      }
+    },
+    {
+      "group": "edges",
+      "data": {
+        "source": "matrixcalculus7",
+        "target": "matrixcalculus8",
+        "type": "supporting",
+        "importance": 1,
+        "message": "Useful for least-squares and regularization gradients."
+      }
+    },
+    {
+      "group": "edges",
+      "data": {
+        "source": "matrixcalculus4",
+        "target": "matrixcalculus9",
+        "type": "main",
+        "importance": 3,
+        "message": "Backprop applies chain rule with Jacobians."
+      }
+    },
+    {
+      "group": "edges",
+      "data": {
+        "source": "matrixcalculus9",
+        "target": "matrixcalculus10",
+        "type": "supporting",
+        "importance": 2,
+        "message": "Matrix calculus powers ML training and analysis."
+      }
+    },
+    {
+      "group": "edges",
+      "data": {
+        "source": "matrixcalculus6",
+        "target": "matrixcalculus11",
+        "type": "supporting",
+        "importance": 1,
+        "message": "Kronecker and vectorization manage shapes in derivations."
+      }
+    }
+  ]
+}
