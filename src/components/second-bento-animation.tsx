@@ -4,14 +4,14 @@ import { OrbitingCircles } from "@/components/ui/orbiting-circle";
 export function SecondBentoAnimation() {
   return (
     <div className="relative flex h-full w-full items-center justify-center overflow-hidden">
-      <div className="pointer-events-none absolute bottom-0 left-0 h-20 w-full bg-gradient-to-t from-background to-transparent z-20"></div>
-      <div className="pointer-events-none absolute top-0 left-0 h-20 w-full bg-gradient-to-b from-background to-transparent z-20"></div>
+      <div className="from-background pointer-events-none absolute bottom-0 left-0 z-20 h-20 w-full bg-gradient-to-t to-transparent"></div>
+      <div className="from-background pointer-events-none absolute top-0 left-0 z-20 h-20 w-full bg-gradient-to-b to-transparent"></div>
 
-      <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 flex items-center justify-center gap-2 size-16 bg-secondary p-2 rounded-full z-30 md:bottom-0 md:top-auto">
-        <Icons.logo className="fill-white size-10" />
+      <div className="bg-secondary absolute top-1/2 left-1/2 z-30 flex size-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center gap-2 rounded-full p-2 md:top-auto md:bottom-0">
+        <Icons.logo className="size-10 fill-white" />
       </div>
       <div className="relative flex h-full w-full items-center justify-center overflow-hidden">
-        <div className="relative flex h-full w-full items-center justify-center translate-y-0 md:translate-y-32">
+        <div className="relative flex h-full w-full translate-y-0 items-center justify-center md:translate-y-32">
           <OrbitingCircles
             index={0}
             iconSize={60}

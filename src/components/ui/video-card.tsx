@@ -1,4 +1,3 @@
-import Giscus from "@giscus/react";
 import {
   Card,
   CardContent,
@@ -14,6 +13,7 @@ import {
   TabsTrigger,
 } from "@/components/ui/primitives/tabs";
 import { type VideoNodeDataDefinition } from "@/types/cytoscape-elements";
+import Giscus from "@giscus/react";
 
 export const VideoCard = ({
   id,

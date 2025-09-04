@@ -77,9 +77,12 @@ export function LineChart({
       return;
     }
 
-    const timeoutId = setTimeout(() => {
-      setShowPulse(true);
-    }, (startAnimationDelay || 0) * 1000);
+    const timeoutId = setTimeout(
+      () => {
+        setShowPulse(true);
+      },
+      (startAnimationDelay || 0) * 1000,
+    );
 
     return () => clearTimeout(timeoutId);
   }, [shouldAnimate, startAnimationDelay]);
@@ -214,9 +217,12 @@ export function NumberFlowCounter({
       return;
     }
 
-    const timeoutId = setTimeout(() => {
-      setShowCounter(true);
-    }, (startAnimationDelay || 0) * 1000);
+    const timeoutId = setTimeout(
+      () => {
+        setShowCounter(true);
+      },
+      (startAnimationDelay || 0) * 1000,
+    );
 
     return () => clearTimeout(timeoutId);
   }, [shouldAnimate, startAnimationDelay]);
@@ -237,7 +243,7 @@ export function NumberFlowCounter({
     <div
       className={`${
         showCounter ? "opacity-100" : "opacity-0"
-      } transition-opacity duration-300 ease-in-out absolute top-32 left-[42%] -translate-x-1/2 text-sm bg-[#1A1B25] border border-white/[0.07] text-white px-4 py-1 rounded-full h-8 flex items-center justify-center font-mono shadow-[0px_1.1px_0px_0px_rgba(255,255,255,0.20)_inset,0px_4.4px_6.6px_0px_rgba(255,255,255,0.01)_inset,0px_2.2px_6.6px_0px_rgba(18,43,105,0.04),0px_1.1px_2.2px_0px_rgba(18,43,105,0.08),0px_0px_0px_1.1px_rgba(18,43,105,0.08)]`}
+      } absolute top-32 left-[42%] flex h-8 -translate-x-1/2 items-center justify-center rounded-full border border-white/[0.07] bg-[#1A1B25] px-4 py-1 font-mono text-sm text-white shadow-[0px_1.1px_0px_0px_rgba(255,255,255,0.20)_inset,0px_4.4px_6.6px_0px_rgba(255,255,255,0.01)_inset,0px_2.2px_6.6px_0px_rgba(18,43,105,0.04),0px_1.1px_2.2px_0px_rgba(18,43,105,0.08),0px_0px_0px_1.1px_rgba(18,43,105,0.08)] transition-opacity duration-300 ease-in-out`}
     >
       <NumberFlow
         value={currentValue}
@@ -288,7 +294,7 @@ export function ThirdBentoAnimation({
   return (
     <div
       ref={ref}
-      className="relative flex size-full items-center justify-center h-[300px] pt-10 overflow-hidden"
+      className="relative flex size-full h-[300px] items-center justify-center overflow-hidden pt-10"
       style={
         {
           "--color": computedColor,
@@ -303,7 +309,7 @@ export function ThirdBentoAnimation({
           delay: startAnimationDelay ? startAnimationDelay + 0.3 : 0.3,
           ease: "easeOut",
         }}
-        className="absolute top-[60%] left-1/2 -translate-x-1/2 w-[2px] h-32 bg-gradient-to-b from-[var(--color)] to-[var(--color-transparent)]"
+        className="absolute top-[60%] left-1/2 h-32 w-[2px] -translate-x-1/2 bg-gradient-to-b from-[var(--color)] to-[var(--color-transparent)]"
       ></motion.div>
       <NumberFlowCounter
         toolTipValues={toolTipValues}

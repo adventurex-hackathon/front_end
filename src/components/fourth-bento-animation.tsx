@@ -104,79 +104,79 @@ export function FourthBentoAnimation({
 
   return (
     <div
-      className="w-full h-full flex flex-col relative"
+      className="relative flex h-full w-full flex-col"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="absolute inset-0 flex -z-10 [mask:linear-gradient(180deg,transparent,black_40%,black_40%,transparent)] ">
-        <div className=" w-1/2 h-full flex items-start justify-between">
+      <div className="absolute inset-0 -z-10 flex [mask:linear-gradient(180deg,transparent,black_40%,black_40%,transparent)]">
+        <div className="flex h-full w-1/2 items-start justify-between">
           {Array.from({ length: 5 }).map((_, index) => (
             <div
               key={index}
-              className="w-px h-5 bg-primary first:bg-transparent"
+              className="bg-primary h-5 w-px first:bg-transparent"
             ></div>
           ))}
         </div>
-        <div className="w-1/2 h-full border-x border-border/70 border-dashed flex items-start justify-between">
+        <div className="border-border/70 flex h-full w-1/2 items-start justify-between border-x border-dashed">
           {Array.from({ length: 5 }).map((_, index) => (
             <div
               key={index}
-              className="w-px h-5 bg-primary first:bg-transparent"
+              className="bg-primary h-5 w-px first:bg-transparent"
             ></div>
           ))}
         </div>
-        <div className=" w-1/2 h-full flex items-start justify-between">
+        <div className="flex h-full w-1/2 items-start justify-between">
           {Array.from({ length: 5 }).map((_, index) => (
             <div
               key={index}
-              className="w-px h-5 bg-primary first:bg-transparent"
+              className="bg-primary h-5 w-px first:bg-transparent"
             ></div>
           ))}
         </div>
-        <div className="w-1/2 h-full border-x border-border/70 border-dashed flex items-start justify-between">
+        <div className="border-border/70 flex h-full w-1/2 items-start justify-between border-x border-dashed">
           {Array.from({ length: 5 }).map((_, index) => (
             <div
               key={index}
-              className="w-px h-5 bg-primary first:bg-transparent "
+              className="bg-primary h-5 w-px first:bg-transparent"
             ></div>
           ))}
         </div>
-        <div className=" w-1/2 h-full flex items-start justify-between">
+        <div className="flex h-full w-1/2 items-start justify-between">
           {Array.from({ length: 5 }).map((_, index) => (
             <div
               key={index}
-              className="w-px h-5 bg-primary first:bg-transparent"
+              className="bg-primary h-5 w-px first:bg-transparent"
             ></div>
           ))}
         </div>
-        <div className="w-1/2 h-full border-x border-border/70 border-dashed flex items-start justify-between">
+        <div className="border-border/70 flex h-full w-1/2 items-start justify-between border-x border-dashed">
           {Array.from({ length: 5 }).map((_, index) => (
             <div
               key={index}
-              className="w-px h-5 bg-primary first:bg-transparent"
+              className="bg-primary h-5 w-px first:bg-transparent"
             ></div>
           ))}
         </div>
-        <div className=" w-1/2 h-full flex items-start justify-between">
+        <div className="flex h-full w-1/2 items-start justify-between">
           {Array.from({ length: 5 }).map((_, index) => (
             <div
               key={index}
-              className="w-px h-5 bg-primary first:bg-transparent"
+              className="bg-primary h-5 w-px first:bg-transparent"
             ></div>
           ))}
         </div>
-        <div className="w-1/2 h-full border-x border-border/70 border-dashed flex items-start justify-between">
+        <div className="border-border/70 flex h-full w-1/2 items-start justify-between border-x border-dashed">
           {Array.from({ length: 5 }).map((_, index) => (
             <div
               key={index}
-              className="w-px h-5 bg-primary first:bg-transparent"
+              className="bg-primary h-5 w-px first:bg-transparent"
             ></div>
           ))}
         </div>
       </div>
 
       {/* Days of the week */}
-      <div className="absolute top-4 left-0 right-0 flex justify-between max-w-md mx-auto px-8 text-sm text-gray-500">
+      <div className="absolute top-4 right-0 left-0 mx-auto flex max-w-md justify-between px-8 text-sm text-gray-500">
         <span>Tue</span>
         <span>Wed</span>
         <span>Thu</span>
@@ -185,7 +185,7 @@ export function FourthBentoAnimation({
       </div>
 
       <motion.div
-        className="absolute top-10 w-[2px] h-[calc(100%-80px)] bg-gradient-to-b from-black dark:from-accent to-transparent z-10"
+        className="dark:from-accent absolute top-10 z-10 h-[calc(100%-80px)] w-[2px] bg-gradient-to-b from-black to-transparent"
         style={{
           x: smoothX,
           translateX: "-50%",
@@ -200,7 +200,7 @@ export function FourthBentoAnimation({
         }}
       />
       <motion.div
-        className="absolute top-14 bg-black dark:bg-accent h-6 z-20 flex items-center justify-center text-xs p-2 rounded-md shadow-[0px_2.2px_6.6px_0px_rgba(18,43,105,0.04),0px_1.1px_2.2px_0px_rgba(18,43,105,0.08),0px_0px_0px_1.1px_rgba(18,43,105,0.08),0px_1.1px_0px_0px_rgba(255,255,255,0.20)_inset,0px_4.4px_6.6px_0px_rgba(255,255,255,0.01)_inset]"
+        className="dark:bg-accent absolute top-14 z-20 flex h-6 items-center justify-center rounded-md bg-black p-2 text-xs shadow-[0px_2.2px_6.6px_0px_rgba(18,43,105,0.04),0px_1.1px_2.2px_0px_rgba(18,43,105,0.08),0px_0px_0px_1.1px_rgba(18,43,105,0.08),0px_1.1px_0px_0px_rgba(255,255,255,0.20)_inset,0px_4.4px_6.6px_0px_rgba(255,255,255,0.01)_inset]"
         style={{
           x: smoothX,
           translateX: "-50%",
@@ -218,7 +218,7 @@ export function FourthBentoAnimation({
       </motion.div>
 
       <div
-        className="w-full absolute grid gap-10 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/3"
+        className="absolute top-1/2 left-1/2 grid w-full -translate-x-1/3 -translate-y-1/2 gap-10"
         ref={containerRef}
       >
         <AnimatePresence>
@@ -255,9 +255,9 @@ export function FourthBentoAnimation({
                 duration: 0.3,
                 delay: startAnimationDelay + index * 0.2,
               }}
-              className={`flex items-center h-8 justify-center gap-2 rounded-lg w-[250px] p-2 shadow-[0px_9px_5px_0px_#00000005,0px_4px_4px_0px_#00000009,0px_1px_2px_0px_#00000010] ${boxConfigs[index].className}`}
+              className={`flex h-8 w-[250px] items-center justify-center gap-2 rounded-lg p-2 shadow-[0px_9px_5px_0px_#00000005,0px_4px_4px_0px_#00000009,0px_1px_2px_0px_#00000010] ${boxConfigs[index].className}`}
             >
-              <p className="font-medium text-sm">{boxConfigs[index].title}</p>
+              <p className="text-sm font-medium">{boxConfigs[index].title}</p>
             </motion.div>
           ))}
         </AnimatePresence>

@@ -1,11 +1,11 @@
 "use client";
 
+import { AuthStatus } from "@/components/auth-status";
 import { Icons } from "@/components/icons";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { AuthStatus } from "@/components/auth-status";
 import { cn } from "@/lib/utils";
-import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion, useScroll } from "framer-motion";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -70,26 +70,26 @@ export function HomeNavbar() {
           className={cn(
             "mx-auto max-w-7xl rounded-2xl transition-all duration-300 xl:px-0",
             hasScrolled
-              ? "px-2 border border-border backdrop-blur-lg bg-background/75"
-              : "shadow-none px-7",
+              ? "border-border bg-background/75 border px-2 backdrop-blur-lg"
+              : "px-7 shadow-none",
           )}
         >
           <div className="flex h-[56px] items-center justify-between p-4">
             <Link href="/home" className="flex items-center gap-3">
               <Icons.logo className="size-7 md:size-10" />
-              <p className="text-lg font-semibold text-primary">VisoCode</p>
+              <p className="text-primary text-lg font-semibold">VisoCode</p>
             </Link>
 
             {/* Empty space where nav menu would be on landing page */}
             <div className="flex-1" />
 
-            <div className="flex flex-row items-center gap-1 md:gap-3 shrink-0">
+            <div className="flex shrink-0 flex-row items-center gap-1 md:gap-3">
               <div className="flex items-center space-x-6">
                 <AuthStatus />
               </div>
               <ThemeToggle />
               <button
-                className="md:hidden border border-border size-8 rounded-md cursor-pointer flex items-center justify-center"
+                className="border-border flex size-8 cursor-pointer items-center justify-center rounded-md border md:hidden"
                 onClick={toggleDrawer}
               >
                 {isDrawerOpen ? (
@@ -118,7 +118,7 @@ export function HomeNavbar() {
             />
 
             <motion.div
-              className="fixed inset-x-0 w-[95%] mx-auto bottom-3 bg-background border border-border p-4 rounded-xl shadow-lg"
+              className="bg-background border-border fixed inset-x-0 bottom-3 mx-auto w-[95%] rounded-xl border p-4 shadow-lg"
               initial="hidden"
               animate="visible"
               exit="exit"
@@ -129,13 +129,13 @@ export function HomeNavbar() {
                 <div className="flex items-center justify-between">
                   <Link href="/home" className="flex items-center gap-3">
                     <Icons.logo className="size-7 md:size-10" />
-                    <p className="text-lg font-semibold text-primary">
+                    <p className="text-primary text-lg font-semibold">
                       VisoCode
                     </p>
                   </Link>
                   <button
                     onClick={toggleDrawer}
-                    className="border border-border rounded-md p-1 cursor-pointer"
+                    className="border-border cursor-pointer rounded-md border p-1"
                   >
                     <X className="size-5" />
                   </button>

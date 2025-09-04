@@ -29,16 +29,16 @@ export const TestimonialCard = ({
     )}
     {...props}
   >
-    <div className="select-none leading-relaxed font-normal text-primary/90">
+    <div className="text-primary/90 leading-relaxed font-normal select-none">
       {description}
     </div>
 
-    <div className="flex w-full select-none items-center justify-start gap-3.5">
+    <div className="flex w-full items-center justify-start gap-3.5 select-none">
       <img src={img} alt={name} className="size-8 rounded-full" />
 
       <div>
-        <p className="font-medium text-primary/90">{name}</p>
-        <p className="text-xs font-normal text-primary/50">{role}</p>
+        <p className="text-primary/90 font-medium">{name}</p>
+        <p className="text-primary/50 text-xs font-normal">{role}</p>
       </div>
     </div>
   </div>
@@ -80,8 +80,8 @@ export function SocialProofTestimonials({
                 </Marquee>
               ))}
           </div>
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/6 md:h-1/5 w-full bg-gradient-to-t from-background from-20%"></div>
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-1/6 md:h-1/5 w-full bg-gradient-to-b from-background from-20%"></div>
+          <div className="from-background pointer-events-none absolute inset-x-0 bottom-0 h-1/6 w-full bg-gradient-to-t from-20% md:h-1/5"></div>
+          <div className="from-background pointer-events-none absolute inset-x-0 top-0 h-1/6 w-full bg-gradient-to-b from-20% md:h-1/5"></div>
         </div>
       </div>
     </div>

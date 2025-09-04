@@ -12,7 +12,7 @@ import { TestimonialSection } from "@/components/sections/testimonial-section";
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center justify-center divide-y divide-border min-h-screen w-full">
+    <main className="divide-border flex min-h-screen w-full flex-col items-center justify-center divide-y">
       <HeroSection />
       <CompanyShowcase />
       <BentoSection />

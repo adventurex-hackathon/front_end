@@ -45,11 +45,11 @@ export function FirstBentoAnimation() {
   return (
     <div
       ref={ref}
-      className="w-full h-full p-4 flex flex-col items-center justify-center gap-5"
+      className="flex h-full w-full flex-col items-center justify-center gap-5 p-4"
     >
-      <div className="pointer-events-none absolute bottom-0 left-0 h-20 w-full bg-gradient-to-t from-background to-transparent z-20"></div>
+      <div className="from-background pointer-events-none absolute bottom-0 left-0 z-20 h-20 w-full bg-gradient-to-t to-transparent"></div>
       <motion.div
-        className="max-w-md mx-auto w-full flex flex-col gap-2"
+        className="mx-auto flex w-full max-w-md flex-col gap-2"
         animate={{
           y: shouldAnimate ? -75 : 0,
         }}
@@ -61,7 +61,7 @@ export function FirstBentoAnimation() {
       >
         <div className="flex items-end justify-end gap-3">
           <motion.div
-            className="max-w-[280px] bg-secondary text-white p-4 rounded-2xl ml-auto shadow-[0_0_10px_rgba(0,0,0,0.05)]"
+            className="bg-secondary ml-auto max-w-[280px] rounded-2xl p-4 text-white shadow-[0_0_10px_rgba(0,0,0,0.05)]"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{
@@ -74,16 +74,16 @@ export function FirstBentoAnimation() {
               everyone. Any suggestions for finding an optimal time slot?
             </p>
           </motion.div>
-          <div className="flex items-center bg-background rounded-full w-fit border border-border flex-shrink-0">
+          <div className="bg-background border-border flex w-fit flex-shrink-0 items-center rounded-full border">
             <img
               src="https://randomuser.me/api/portraits/women/79.jpg"
               alt="User Avatar"
-              className="size-8 rounded-full flex-shrink-0"
+              className="size-8 flex-shrink-0 rounded-full"
             />
           </div>
         </div>
         <div className="flex items-start gap-2">
-          <div className="flex items-center bg-background rounded-full size-10 flex-shrink-0 justify-center shadow-[0_0_10px_rgba(0,0,0,0.05)] border border-border">
+          <div className="bg-background border-border flex size-10 flex-shrink-0 items-center justify-center rounded-full border shadow-[0_0_10px_rgba(0,0,0,0.05)]">
             <Icons.logo className="size-4" />
           </div>
 
@@ -92,7 +92,7 @@ export function FirstBentoAnimation() {
               {!shouldAnimate ? (
                 <motion.div
                   key="dots"
-                  className="absolute left-0 top-0 bg-background p-4 rounded-2xl border border-border"
+                  className="bg-background border-border absolute top-0 left-0 rounded-2xl border p-4"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -10 }}
@@ -105,7 +105,7 @@ export function FirstBentoAnimation() {
                     {[0, 1, 2].map((index) => (
                       <motion.div
                         key={index}
-                        className="w-2 h-2 bg-primary/50 rounded-full"
+                        className="bg-primary/50 h-2 w-2 rounded-full"
                         animate={{ y: [0, -5, 0] }}
                         transition={{
                           duration: 0.6,
@@ -121,7 +121,7 @@ export function FirstBentoAnimation() {
                 <motion.div
                   key="response"
                   layout
-                  className="absolute left-0 top-0 md:min-w-[300px] min-w-[220px] p-4 bg-accent border border-border rounded-xl shadow-[0_0_10px_rgba(0,0,0,0.05)]"
+                  className="bg-accent border-border absolute top-0 left-0 min-w-[220px] rounded-xl border p-4 shadow-[0_0_10px_rgba(0,0,0,0.05)] md:min-w-[300px]"
                   initial={{ opacity: 0, x: 10 }}
                   animate={{
                     opacity: 1,

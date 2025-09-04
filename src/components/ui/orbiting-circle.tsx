@@ -75,8 +75,8 @@ export function OrbitingCircles({
                 className={cn(
                   "size-full rounded-full",
                   "border border-[0,0,0,0.07] dark:border-[rgba(249,250,251,0.07)]",
-                  "bg-gradient-to-b from-[rgba(0,0,0,0.05)] from-0% via-[rgba(249,250,251,0.00)] via-54.76%",
-                  "dark:bg-gradient-to-b dark:from-[rgba(249,250,251,0.03)] dark:from-0% dark:via-[rgba(249,250,251,0.00)] dark:via-54.76%",
+                  "via-54.76% bg-gradient-to-b from-[rgba(0,0,0,0.05)] from-0% via-[rgba(249,250,251,0.00)]",
+                  "dark:via-54.76% dark:bg-gradient-to-b dark:from-[rgba(249,250,251,0.03)] dark:from-0% dark:via-[rgba(249,250,251,0.00)]",
                   className,
                 )}
               />
@@ -98,7 +98,7 @@ export function OrbitingCircles({
                 } as React.CSSProperties
               }
               className={cn(
-                "absolute flex size-[var(--icon-size)] z-20 p-1 transform-gpu animate-orbit items-center justify-center rounded-full",
+                "animate-orbit absolute z-20 flex size-[var(--icon-size)] transform-gpu items-center justify-center rounded-full p-1",
                 { "[animation-direction:reverse]": reverse },
               )}
             >

@@ -8,13 +8,13 @@ export function TestimonialSection() {
   return (
     <section
       id="testimonials"
-      className="flex flex-col items-center justify-center w-full"
+      className="flex w-full flex-col items-center justify-center"
     >
       <SectionHeader>
-        <h2 className="text-3xl md:text-4xl font-medium tracking-tighter text-center text-balance">
+        <h2 className="text-center text-3xl font-medium tracking-tighter text-balance md:text-4xl">
           Empower Your Workflow with AI
         </h2>
-        <p className="text-muted-foreground text-center text-balance font-medium">
+        <p className="text-muted-foreground text-center font-medium text-balance">
           Ask your AI Agent for real-time collaboration, seamless integrations,
           and actionable insights to streamline your operations.
         </p>

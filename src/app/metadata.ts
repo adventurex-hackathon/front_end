@@ -1,5 +1,5 @@
-import { Metadata } from "next";
 import { siteConfig } from "@/lib/site";
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: siteConfig.name,
